@@ -47,13 +47,10 @@ class ImageProcessor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         
         let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
         
-        let ciImage = CIImage(cvPixelBuffer: imageBuffer)//.applyingFilter(
-//            "CIColorControls", parameters: [
-//                kCIInputSaturationKey: 0, kCIInputContrastKey: 32
-//            ])
+        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
         let ciContext = CIContext()
         let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)
-        let image = UIImage(cgImage: cgImage!, scale: 1.0, orientation: .right)
+        let image = UIImage(cgImage: cgImage!)//, scale: 1.0, orientation: .right)
         
         return image
         
