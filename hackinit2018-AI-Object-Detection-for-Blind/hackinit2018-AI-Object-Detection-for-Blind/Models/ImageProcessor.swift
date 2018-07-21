@@ -22,6 +22,7 @@ class ImageProcessor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     private let captureSession = AVCaptureSession()
     private let captureDevice = AVCaptureDevice.default(for: .video)!
     private var capturedFrame = UIImage()
+    private var calibrationList = [String]()
     
     weak var delegate: ImageProcessorDelegate?
     
@@ -75,6 +76,10 @@ class ImageProcessor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
             }
             DispatchQueue.main.async {
                 self?.delegate?.setResultLabelText(to: topResult.identifier)
+//                if self?.calibrationList.count == 10 {
+//                    self?.calibrationList.removeFirst()
+//                }
+//                self?.calibrationList.append(topResult.identifier)
             }
         }
         
