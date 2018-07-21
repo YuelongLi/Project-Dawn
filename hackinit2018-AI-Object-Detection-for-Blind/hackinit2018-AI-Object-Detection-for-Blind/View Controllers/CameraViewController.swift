@@ -13,8 +13,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     @IBOutlet weak var cameraView: UIImageView!
     
-    //private let captureDevice = AVCaptureDevice.default(for: .video)
     private let imageProcessor = ImageProcessor()
+    private let tts = TTSProcessor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +22,6 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         imageProcessor.setupCaptureSession()
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-
 }
 
 extension CameraViewController: ImageProcessorDelegate {

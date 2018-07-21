@@ -50,7 +50,7 @@ class ImageProcessor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
         let ciContext = CIContext()
         let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)
-        let image = UIImage(cgImage: cgImage!)//, scale: 1.0, orientation: .right)
+        let image = UIImage(cgImage: cgImage!)
         
         return image
         
