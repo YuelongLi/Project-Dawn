@@ -14,6 +14,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     @IBOutlet weak var cameraView: UIImageView!
     @IBOutlet weak var resultLabel: UILabel!
     
+    private let captureDevice = AVCaptureDevice.default(for: .video)!
     private let imageProcessor = ImageProcessor()
     private let tts = TTSProcessor()
     
@@ -21,6 +22,17 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         super.viewDidLoad()
         imageProcessor.delegate = self
         imageProcessor.setupCaptureSession()
+    }
+    
+    @IBAction func toggleFlash(_ sender: UIButton) {
+        try! captureDevice.lockForConfiguration()
+        let torchIsOn = captureDevice.torchMode == .on
+        captureDevice.torchMode = torchIsOn ? .off : .on
+        captureDevice.unlockForConfiguration()
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
     
 }
