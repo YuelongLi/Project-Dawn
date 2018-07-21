@@ -21,18 +21,31 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ii6-3a-Sap">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="FUA-ZJ-xC5">
+                                <rect key="frame" x="16" y="547" width="343" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="F6W-od-nNH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FUA-ZJ-xC5" secondAttribute="trailing" constant="16" id="Bow-6E-hG1"/>
                             <constraint firstItem="ii6-3a-Sap" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="HDO-Iu-xUH"/>
+                            <constraint firstItem="FUA-ZJ-xC5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="bPO-za-xy1"/>
                             <constraint firstItem="ii6-3a-Sap" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="euR-St-k6V"/>
                             <constraint firstItem="ii6-3a-Sap" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hWm-EZ-YGn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FUA-ZJ-xC5" secondAttribute="bottom" constant="20" id="q6f-XV-7bj"/>
                             <constraint firstItem="ii6-3a-Sap" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="uhc-cR-d7g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="cameraView" destination="ii6-3a-Sap" id="Z1c-h4-dIQ"/>
+                        <outlet property="resultLabel" destination="FUA-ZJ-xC5" id="M8f-jh-ZR0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -12,6 +12,7 @@ import AVFoundation
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet weak var cameraView: UIImageView!
+    @IBOutlet weak var resultLabel: UILabel!
     
     private let imageProcessor = ImageProcessor()
     private let tts = TTSProcessor()
@@ -30,6 +31,16 @@ extension CameraViewController: ImageProcessorDelegate {
         let layerToAdd = layer
         layerToAdd.frame = cameraView.bounds
         cameraView.layer.addSublayer(layerToAdd)
+    }
+    
+    func setResultLabelText(to text: String) {
+        resultLabel.text = text
+    }
+    
+    func speak() {
+        DispatchQueue.main.async {
+            self.tts.speak(text: self.resultLabel.text!)
+        }
     }
     
 }

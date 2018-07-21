@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB1C93D1210354BB00BC13C1 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = CB1C93D0210354BB00BC13C1 /* Inceptionv3.mlmodel */; };
 		CB84802820FC75A70039978A /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84802720FC75A70039978A /* ImageProcessor.swift */; };
 		CB84802A20FC7A2B0039978A /* TTSProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB84802920FC7A2B0039978A /* TTSProcessor.swift */; };
 		CBD0BBBA20FC6F8E00F54566 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD0BBB920FC6F8E00F54566 /* AppDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB1C93D0210354BB00BC13C1 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		CB84802720FC75A70039978A /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 		CB84802920FC7A2B0039978A /* TTSProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTSProcessor.swift; sourceTree = "<group>"; };
 		CBD0BBB620FC6F8E00F54566 /* hackinit2018-AI-Object-Detection-for-Blind.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hackinit2018-AI-Object-Detection-for-Blind.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,6 +52,7 @@
 		CB84802C20FC7A4C0039978A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CB1C93D0210354BB00BC13C1 /* Inceptionv3.mlmodel */,
 				CB84802920FC7A2B0039978A /* TTSProcessor.swift */,
 				CB84802720FC75A70039978A /* ImageProcessor.swift */,
 			);
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB84802A20FC7A2B0039978A /* TTSProcessor.swift in Sources */,
+				CB1C93D1210354BB00BC13C1 /* Inceptionv3.mlmodel in Sources */,
 				CBD0BBBC20FC6F8E00F54566 /* CameraViewController.swift in Sources */,
 				CB84802820FC75A70039978A /* ImageProcessor.swift in Sources */,
 				CBD0BBBA20FC6F8E00F54566 /* AppDelegate.swift in Sources */,

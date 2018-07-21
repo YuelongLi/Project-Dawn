@@ -8,9 +8,13 @@
 
 import UIKit
 import AVFoundation
+import CoreML
+import Vision
 
 protocol ImageProcessorDelegate: class {
     func setupCameraView(with layer: AVCaptureVideoPreviewLayer)
+    func setResultLabelText(to text: String)
+    func speak()
 }
 
 class ImageProcessor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
@@ -40,19 +44,48 @@ class ImageProcessor: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        capturedFrame = imageFromSampleBuffer(sampleBuffer: sampleBuffer)
+        let capturedFrame = imageFromSampleBuffer(sampleBuffer: sampleBuffer)
+        detect(capturedFrame)
+        delegate?.speak()
     }
     
-    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage {
-        
+    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CIImage {
+
         let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
-        
+
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
-        let ciContext = CIContext()
-        let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)
-        let image = UIImage(cgImage: cgImage!)
+//        let ciContext = CIContext()
+//        let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)
+//        let image = UIImage(cgImage: cgImage!)
+
+        return ciImage
+
+    }
+    
+    private func detect(_ image: CIImage) {
         
-        return image
+        guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else {
+            fatalError("Cannot load Places ML model")
+        }
+        
+        let request = VNCoreMLRequest(model: model) { [weak self] request, error in
+            guard let results = request.results as? [VNClassificationObservation],
+                let topResult = results.first else {
+                    fatalError("Unexpected result type from VNCoreMLRequest")
+            }
+            DispatchQueue.main.async {
+                self?.delegate?.setResultLabelText(to: topResult.identifier)
+            }
+        }
+        
+        let handler = VNImageRequestHandler(ciImage: image)
+        DispatchQueue.global(qos: .userInteractive).async {
+            do {
+                try handler.perform([request])
+            } catch {
+                print(error)
+            }
+        }
         
     }
     

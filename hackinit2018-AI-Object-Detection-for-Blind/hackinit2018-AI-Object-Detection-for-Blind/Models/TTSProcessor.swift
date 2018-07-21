@@ -16,7 +16,9 @@ class TTSProcessor {
     func speak(text: String) {
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice.speechVoices()[17] // English - Samantha
-        synthesizer.speak(utterance)
+        if !synthesizer.isSpeaking {
+            synthesizer.speak(utterance)
+        }
     }
     
 }
